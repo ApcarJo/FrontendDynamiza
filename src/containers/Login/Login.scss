@@ -1,0 +1,64 @@
+
+.vistaLogin{
+    @extend .center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    
+    background-color: white;
+    color: rgb(22, 22, 22);
+}
+
+.actionButtons {
+    width: 20em;
+    justify-content: space-evenly;
+}
+
+.actionCard {
+    box-sizing: border-box;
+    height: fit-content;
+    width: fit-content;
+    background-color: rgba(223, 223, 223, 0.698);
+    border-radius: 0.5em;
+    padding: 3em 1em;
+}
+
+.sendButton{
+    box-sizing: border-box;
+    height: 3em;
+    width: 5em;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: rgba(157, 165, 235, 0.746);
+    transition: 0.3s;
+    font-size: smaller;
+    border-radius: 0.5em;
+    color: white;
+    &:hover {
+        transition: 0.3s;
+        background-color: rgb(153, 82, 219);
+    }
+}
+
+.loginBox {
+    background-color: transparent;
+    height: 2em;
+    width: 16em;
+    outline: none;
+    padding: 2em 1em;
+    padding-bottom: 0;
+    border: none;
+    opacity: 1;
+    font-size: 0.8em;
+    border-bottom: black 0.1em solid;
+    color: black;
+}
+
+.errorsText {
+    margin-top: 0.5em;
+    color: red;
+    font-weight: bold;
+    font-size: smaller;
+}
