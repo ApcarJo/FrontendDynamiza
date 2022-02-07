@@ -27,6 +27,8 @@ const AddRecord = (props) => {
         try {
             await axios.post('https://dynamizaticbackend.herokuapp.com/record', body, { headers: { 'authorization': 'Bearer ' + props.credentials?.token } });
 
+            props.newDoc();
+
         } catch (e) {
             console.log(e);
         }
@@ -42,7 +44,7 @@ const AddRecord = (props) => {
                 <input className="inputBox" name="company_name" type="text" onChange={updateRecords} placeholder="Company" required />
                 <input className="inputBox" name="status" type="text" onChange={updateRecords} placeholder="Status" required />
                 <input className="inputBox" name="type" type="text" onChange={updateRecords} placeholder="Type" required />
-                <button className="actionButton" id="newRecord" onClick={() => newRecord(1)} placeholder="Company">
+                <button className="actionButton" id="newRecord" onClick={() => newRecord()} placeholder="Company">
                     <span>New</span>
                 </button>
             </div>

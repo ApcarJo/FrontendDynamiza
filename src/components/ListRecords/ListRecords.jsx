@@ -17,6 +17,7 @@ const ListRecords = (props) => {
 
         try {
             await axios.delete(`https://dynamizaticbackend.herokuapp.com/record`, { data: body, headers: { 'authorization': 'Bearer ' + token } });
+            props.deleteDoc();
         } catch (e) {
             console.log(e);
         }
