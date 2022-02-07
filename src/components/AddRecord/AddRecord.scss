@@ -1,0 +1,25 @@
+
+#newRecord {
+    margin: 0 2em;
+    padding: 0.5em 1em;
+    border-radius: 0.2em;
+    height: fit-content;
+    width: auto;
+    background-color: $secondary;
+    transition: 0.4s;
+    &:hover {
+        transition: 0.3s;
+        background-color: rgba(46, 179, 46, 0.781);
+    }
+}
+
+.newRecordBox {
+    height: fit-content;
+    background-color: #72a9c377;
+    margin: 1em 0em;
+}
+
+.rowBox1 {
+    @extend .rowBox;
+    border: none;
+}

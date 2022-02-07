@@ -1,0 +1,41 @@
+
+.rowBox {
+    box-sizing: border-box;
+    @extend .center;
+    width: 100%;
+    padding: 1em 1em;
+    border-bottom: solid 0.05em grey;
+}
+
+.dataBox {
+    @extend .df;
+    @extend .row;
+    @extend .right;
+    font-size: smaller;
+    flex-basis: 0;
+    flex-grow: 1;
+    gap: 0.5em;
+    width: 100%;
+}
+
+.actionButton {
+    cursor: pointer;
+    border: none;
+    background-color: lightgray;
+    color: white;
+    transition: 0.4s;
+    padding: 0.1em 0.5em;
+    border-radius: 0.2em;
+    &:hover {
+        transition: 0.3s;
+        background-color: $secondary;
+    }
+}
+
+.delete {
+    transition: 0.4s;
+    &:hover {
+        background-color: red;
+        transition: 0.3s;
+    }
+}
