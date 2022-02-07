@@ -12,13 +12,13 @@ const Record = (props) => {
 
     const [records, setRecords] = useState({});
 
-    const updateRecordss = (e) => {
+    const updateRecords = (e) => {
         setRecords({ ...records, [e.target.name]: e.target.value })
     }
 
     const [pagination, setPagination] = useState({
         page: 1,
-        limit: 65,
+        limit: 10,
     });
 
     useEffect(() => {
@@ -26,16 +26,15 @@ const Record = (props) => {
     }, []);
 
     useEffect(() => {
+        getRecords();
 
     });
 
     const colAt = ['Order Id', 'Country', 'Ship Date', 'Company', 'Status', 'Type', 'Actions']
 
-
     const getRecords = async () => {
         try {
-            // let res = await axios.get(`https://dynamizaticbackend.herokuapp.com/record/get?page=${pagination.page}&limit=${pagination.limit}`);
-            let res = await axios.get(`http://localhost:3006/record/get?page=${pagination.page}&limit=${pagination.limit}`);
+            let res = await axios.get(`https://dynamizaticbackend.herokuapp.com/record/get?page=${pagination.page}&limit=${pagination.limit}`);
             setRecords({ ...records, listRecords: res.data.results });
 
         } catch (e) {
@@ -45,7 +44,7 @@ const Record = (props) => {
     return (
         <div className="vistaRecord">
             <div className="tableRecords">
-                <AddRecord onChange={()=>getRecords()}/>
+                <AddRecord newRecord={val => setPagination({ ...pagination, page: 1 })} />
                 <div className="rowBox">
                     {colAt.map((col, index) => (
                         <div key={index} className="dataBox textCap">{col}</div>
@@ -53,7 +52,7 @@ const Record = (props) => {
                 </div>
                 {records.listRecords?.map((a, index) => (
                     <div key={index}>
-                        <ListRecords data={a} />
+                        <ListRecords data={a} deleteRecord={val => setPagination({ ...pagination, page: 1 })} />
                     </div>))}
             </div>
         </div>
