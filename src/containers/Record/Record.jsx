@@ -35,7 +35,6 @@ const Record = (props) => {
         try {
             let res = await axios.get(`https://dynamizaticbackend.herokuapp.com/record/get?page=${pagination.page}&limit=${pagination.limit}`);
             setRecords({ ...records, listRecords: res.data.results });
-            console.log(res.data)
             setPagination({...pagination, prev: res.data.previous?.page, next: res.data.next?.page, count: res.data.coun})
             pagination.res = Math.floor(res.data.count / res.data.next?.limit);
         } catch (e) {
