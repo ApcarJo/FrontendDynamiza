@@ -1,50 +1,21 @@
-.header {
+.headerComp {
+    box-sizing: border-box;
     @extend .center;
     @extend .row;
-    height:  6em;
-    background-color:#11325a;
+    @extend .right;
+    background-color: $primary;
     color: rgb(255, 255, 255);
     width: 100%;
-    padding: 0 3em;
-    /* background-color: rgb(142, 165, 209); */
-}
-
-.headerLogo{
-    width: 3.5em;
-    transition: 0.3s;
-}
-
-.headerLogo:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.3s;
-}
-
-.headerLinks {
-    width: 60%;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    align-items: center;
-    color: rgb(148, 34, 34);
-    background-color: purple;
-}
-
-.headerUser{
-    width: 30%;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
-    align-items: center;
+    padding: 0 5em;
 }
 
 .linkLogout {
+    font-size: smaller;
     margin: 1em;
     transition: 0.2s;
-}
-
-.linkLogout:hover{
-    cursor: pointer;
-    text-decoration: underline;
-    transition: 0.2s;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        transition: 0.2s;
+    }
 }

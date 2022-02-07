@@ -11,16 +11,14 @@ const Header = (props) => {
 
     const logOut = () => {
         props.dispatch({ type: LOGOUT });
-        navigate("/")
+        navigate("/login")
     }
 
     return (
-        <div className="header">
-            <div className="headerUser">
-                <Button path="/login" destination="LOGIN" />
-                <Button path="/register" destination="REGISTER" />
-                <div className="linkLogout" onClick={() => logOut()}>LOGOUT</div>
-            </div>
+        <div className="headerComp">
+            {!props.credentials.user?._id && <Button path="/login" destination="LOGIN" />}
+            {!props.credentials.user?._id && <Button path="/register" destination="REGISTER" />}
+            {props.credentials.user?._id && <div className="linkLogout" onClick={() => logOut()}>LOGOUT</div>}
         </div>
     )
 }
