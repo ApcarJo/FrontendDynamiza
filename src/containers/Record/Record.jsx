@@ -20,36 +20,32 @@ const Record = (props) => {
         page: 1,
         limit: 10,
         next: '',
-        previous: '',
+        prev: '',
         count: '',
+        res: ''
     });
 
     useEffect(() => {
         getRecords();
     }, []);
 
-    useEffect(() => {
-        // getRecords();
-    });
-
-    // const index = () => {
-    //     pagination?.count.map
-    //     let counter = counter.push(
-    //     <button> 1</button>)
-    // }
-
     const colAt = ['Order Id', 'Country', 'Ship Date', 'Company', 'Status', 'Type', 'Actions']
 
     const getRecords = async () => {
         try {
             let res = await axios.get(`https://dynamizaticbackend.herokuapp.com/record/get?page=${pagination.page}&limit=${pagination.limit}`);
-            console.log(res.data);
             setRecords({ ...records, listRecords: res.data.results });
-            // setPagination({...pagination, next: res.data?.next, previous: res.data?.previous, count: res.data?.count});
-
+            console.log(res.data)
+            setPagination({...pagination, prev: res.data.previous?.page, next: res.data.next?.page, count: res.data.coun})
+            pagination.res = Math.floor(res.data.count / res.data.next?.limit);
         } catch (e) {
             console.log(e);
         };
+    }
+
+    const nextPage = (page) => {
+        pagination.page = page;
+        getRecords();
     }
     return (
         <div className="vistaRecord">
@@ -65,6 +61,11 @@ const Record = (props) => {
                         <ListRecords data={a} deleteDoc={() => getRecords()} />
                     </div>
                 ))}
+                <div>
+                    {pagination.prev && (<button onClick={()=>nextPage(pagination.prev)}>{pagination.prev}</button>)}
+                    {pagination.page && (<button>{pagination.page}</button>)}
+                    {pagination.next && (<button onClick={()=>nextPage(pagination.next)}>{pagination.next}</button>)}
+                </div>
             </div>
         </div>
     )
