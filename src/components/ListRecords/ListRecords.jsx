@@ -8,7 +8,6 @@ const ListRecords = (props) => {
 
     const [record, setRecords] = useState({});
     const [show, setShow] = useState(false);
-    console.log(show)
 
     const updateRecords = (e) => {
         setRecords({ ...record, [e.target.name]: e.target.value })
@@ -26,11 +25,9 @@ const ListRecords = (props) => {
             ship_date: record.date,
             user_id: props.credentials.user._id
         };
-        console.log(body)
 
         try {
-            await axios.put(`http://localhost:3006/record`, body, {headers: { 'authorization': 'Bearer ' + token } });
-            // await axios.put(`https://dynamizaticbackend.herokuapp.com/record`, body, {headers: { 'authorization': 'Bearer ' + token } });
+            await axios.put(`https://dynamizaticbackend.herokuapp.com/record`, body, {headers: { 'authorization': 'Bearer ' + token } });
             props.deleteDoc();
         } catch (e) {
             console.log(e);
@@ -82,7 +79,6 @@ const ListRecords = (props) => {
                 </div>
             </div>
             {show && (
-
                 <div className='rowBox1 gap24'>
                     <input className="inputBox" name="country" type="text" onChange={updateRecords} defaultValue={props.data.country} required />
                     <input className="inputBox" name="ship_date" type="date" onChange={updateRecords} defaultValue={props.data.ship_date} required />
