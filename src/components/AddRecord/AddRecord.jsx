@@ -38,13 +38,11 @@ const AddRecord = (props) => {
         <div className="newRecordBox">
             <div className="rowBox1 gap24">
                 <input className="inputBox" name="country" type="text" onChange={updateRecords} placeholder="Country" required />
-
                 <input className="inputBox" name="ship_date" type="date" onChange={updateRecords} placeholder="Ship Date" required />
-
                 <input className="inputBox" name="company_name" type="text" onChange={updateRecords} placeholder="Company" required />
                 <input className="inputBox" name="status" type="text" onChange={updateRecords} placeholder="Status" required />
                 <input className="inputBox" name="type" type="text" onChange={updateRecords} placeholder="Type" required />
-                <button className="actionButton" id="newRecord" onClick={() => newRecord()} placeholder="Company">
+                <button className="actionButton" id="newRecord" onClick={() => newRecord()}>
                     <span>New</span>
                 </button>
             </div>

@@ -26,6 +26,7 @@
     transition: 0.4s;
     padding: 0.1em 0.5em;
     border-radius: 0.2em;
+    height: fit-content;
     &:hover {
         transition: 0.3s;
         background-color: $secondary;
