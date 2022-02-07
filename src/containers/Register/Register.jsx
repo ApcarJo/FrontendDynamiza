@@ -3,18 +3,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 const Register = () => {
 
     let navigate = useNavigate();
 
-    // Hook
-    const [datosUser, setDatosUser] = useState(
-        {
-            email: '',
-            password: '',
-            password2: '',
-        });
+    const [datosUser, setDatosUser] = useState({
+        email: '',
+        password: '',
+        password2: '',
+    });
 
     const [errors, setErrors] = useState({
         eEmail: '',
@@ -22,7 +19,6 @@ const Register = () => {
         ePassword2: '',
     });
 
-    // Handler
     const updateFormulario = (e) => {
         setDatosUser({ ...datosUser, [e.target.name]: e.target.value })
     }
@@ -34,7 +30,11 @@ const Register = () => {
         }
 
         if (datosUser.password === datosUser.password2) {
-            await axios.post('https://dynamizaticbackend.herokuapp.com/user', body);
+            try {
+                await axios.post('https://dynamizaticbackend.herokuapp.com/user', body);
+            } catch (e) {
+                console.log(e);
+            }
 
             setTimeout(() => {
                 navigate(`/login`);
@@ -75,28 +75,22 @@ const Register = () => {
     }
 
     return (
-        <div className="vistaRegisterUser">
+        <div className="vistaRegister">
             <div className="actionCard center column">
-                REGISTER
-                <div className="box1">
-                    <input className="inputWhite" name="email" type="text" onChange={updateFormulario} onBlur={() => checkError("email")} placeholder="Email" required />
-                    <div className="errorsText">{errors.eEmail}</div>
+                <span>REGISTER</span>
+                <div>
+                    <input className="inputBox" name="email" type="text" onChange={updateFormulario} onBlur={() => checkError("email")} placeholder="Email" required />
+                    <span className="errorsText">{errors.eEmail}</span>
+
+                    <input className="inputBox" name="password" type="password" onChange={updateFormulario} onBlur={() => checkError("password")} placeholder="Password" required />
+                    <span className="errorsText">{errors.ePassword}</span>
+
+                    <input className="inputBox" name="password2" type="password" onChange={updateFormulario} onBlur={() => checkError("password2")} placeholder="Repeat Password" required />
+                    <span className="errorsText">{errors.ePassword2}</span>
                 </div>
 
-
-                <div className="box1">
-                    <input className="inputWhite" name="password" type="password" onChange={updateFormulario} onBlur={() => checkError("password")} placeholder="Password" required />
-                    <div className="errorsText">{errors.ePassword}</div>
-                </div>
-
-                <div className="box1">
-                    <input className="inputWhite" name="password2" type="password" onChange={updateFormulario} onBlur={() => checkError("password2")} placeholder="Repeat Password" required />
-                    <div className="errorsText">{errors.ePassword2}</div>
-                </div>
-                <div className="bottomCard max_width df sb">
-                    <div className="sendButton center" onClick={() => applyRegister()}>Register</div>
-                    <div className="sendButton center" onClick={() => navigate(-1)}>back</div>
-                </div>
+                <div className="sendButton center" onClick={() => applyRegister()}>Register</div>
+                <div className="sendButton center" onClick={() => navigate(-1)}>back</div>
             </div>
         </div>
     )

@@ -1,55 +1,10 @@
 
-.vistaRegisterUser{
+.vistaRegister{
     @extend .center;
     box-sizing: border-box;
     height: 100vh;
+    max-height: 100%;
     width: 100vw;
+    max-width: 100%;
     color: black;
-
-    background-color: white;
-
-    /* background-color: red; */
-}
-
-.errorsText {
-    font-size: 0.7em;
-    color: red;
-}
-
-.box1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0.8em;
-}
-
-.inputRegister {
-    border: none;
-    padding: 1em;
-    width: 16em;
-    height: 1em;
-    padding-bottom: 0.5em;
-    outline: none;
-    border-bottom: transparent;
-    background-color: transparent;
-    border-bottom: solid 0.1em black;
-    color: black;
-    font-size: 0.8em;
-}
-
-.botonCuco:hover{
-    background-color: lightpink;
-    transition: 0.2s;
-}
-
-.registerButton{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 2em;
-    border-radius: 0.2em;
-    border: solid 0.02em #31326f;
-    cursor: pointer;
 }
