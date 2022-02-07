@@ -73,22 +73,23 @@ const Login = (props) => {
     }
 
     return (
-        <div className="vistaLogin">
+        <div className="vistaLogin column">
             <div className="actionCard center column">
-                <span className="priceQuantity">LOGIN</span>
-                <input className="loginBox" name="email" type="text" onChange={updateCredentials} onBlur={() => checkError("mail")} placeholder="email" required />
-                <div className="errorsText">{msgError.eEmail}</div>
+            <span className="paddingY">LOGIN</span>
+                <div>
+                    <input className="inputBox" name="email" type="text" onChange={updateCredentials} onBlur={() => checkError("email")} placeholder="email" required />
+                    <span className="errorsText">{msgError.eEmail}</span>
 
-                <input className="loginBox" name="password" type="password" onChange={updateCredentials} onBlur={() => checkError("password")} placeholder="password" required />
-                <div className="errorsText">{msgError.ePassword}</div>
-                <br></br>
-                <div className="actionButtons df row">
-                    <div className="sendButton center" onClick={() => logeame()}>Sign in</div>
-                    <div className="sendButton" onClick={() => navigate(`/register`)}>Register now!</div>
+                    <input className="inputBox" name="password" type="password" onChange={updateCredentials} onBlur={() => checkError("password")} placeholder="password" required />
+                    <span className="errorsText">{msgError.ePassword}</span>
                 </div>
-                <div>{msgError.eValidate}</div>
+
+                <div className="sendButton center" onClick={() => logeame()}>Sign in</div>
+                <div className="sendButton" onClick={() => navigate(`/register`)}>Register now!</div>
             </div>
+            <span className="paddingY">{msgError.eValidate}</span>
         </div>
+
     )
 }
 

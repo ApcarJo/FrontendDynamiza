@@ -1,64 +1,66 @@
-
-.vistaLogin{
+.vistaLogin {
+    box-sizing: border-box;
     @extend .center;
-    align-items: center;
-    flex-direction: column;
     width: 100vw;
+    max-height: 100%;
     height: 100vh;
-    
+    max-width: 100%;
     background-color: white;
     color: rgb(22, 22, 22);
-}
-
-.actionButtons {
-    width: 20em;
-    justify-content: space-evenly;
 }
 
 .actionCard {
     box-sizing: border-box;
     height: fit-content;
-    width: fit-content;
-    background-color: rgba(223, 223, 223, 0.698);
+    gap: 1em;
+    width: 24em;
     border-radius: 0.5em;
     padding: 3em 1em;
 }
 
-.sendButton{
+.sendButton {
     box-sizing: border-box;
+    @extend .center;
     height: 3em;
-    width: 5em;
+    width: 100%;
     cursor: pointer;
     border: none;
     outline: none;
-    background-color: rgba(157, 165, 235, 0.746);
-    transition: 0.3s;
+    background-color: $primary;
+    transition: 0.5s;
     font-size: smaller;
     border-radius: 0.5em;
     color: white;
     &:hover {
-        transition: 0.3s;
+        transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
         background-color: rgb(153, 82, 219);
     }
 }
 
-.loginBox {
-    background-color: transparent;
+.inputBox {
+    background-color: white;
     height: 2em;
-    width: 16em;
+    width: 24em;
     outline: none;
-    padding: 2em 1em;
+    padding: 0.5em 1em;
     padding-bottom: 0;
-    border: none;
+    border-radius: 0.2em;
     opacity: 1;
-    font-size: 0.8em;
-    border-bottom: black 0.1em solid;
+    border: rgba(59, 59, 59, 0.568) 0.1em solid;
     color: black;
+    transition: 0.4s;
+    &:focus {
+        transition: cubic-bezier(0.23, 1, 0.32, 1);
+        border: $primary 0.1em solid;
+    }
 }
 
 .errorsText {
+    width: 100%;
+    @extend .df;
+    @extend .left;
     margin-top: 0.5em;
-    color: red;
+    color: rgba(255, 0, 0, 0.794);
     font-weight: bold;
     font-size: smaller;
 }
