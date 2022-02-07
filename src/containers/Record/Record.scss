@@ -1,0 +1,19 @@
+
+.vistaRecord {
+    @extend .center;
+    height: 100vh;
+    align-items: flex-start;
+    padding: 1em 0;
+}
+
+.tableRecords {
+    width: 100%;
+    padding: 4em 1em;
+    // border: solid lightgray 0.1em;
+    border-radius: 0.2em;
+}
+
+.textCap {
+    font-weight: bold;
+    color: rgb(165, 165, 165);
+}

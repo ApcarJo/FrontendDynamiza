@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { LOGIN } from '../../redux/types';
+import ListRecords from '../../components/ListRecords/ListRecords';
+import AddRecord from '../../components/AddRecord/AddRecord';
 
 const Record = (props) => {
 
@@ -15,39 +16,46 @@ const Record = (props) => {
         setRecords({ ...records, [e.target.name]: e.target.value })
     }
 
+    const [pagination, setPagination] = useState({
+        page: 1,
+        limit: 65,
+    });
+
     useEffect(() => {
-        getRecords(1, 10);
+        getRecords();
     }, []);
 
     useEffect(() => {
+
     });
 
+    const colAt = ['Order Id', 'Country', 'Ship Date', 'Company', 'Status', 'Type', 'Actions']
 
-    const getRecords = async (page, limit, res) => {
+
+    const getRecords = async () => {
         try {
-            let body = {
-                page: page,
-                limit: limit,
-                user_id: props.credentials.user?._id
-            }
-            let res = await axios.get(`https://dynamizaticbackend.herokuapp.com/records`, body);
-            console.log(res);
-
-            props.dispatch({ type: LOGIN, payload: res.data });
-
-            setTimeout(() => {
-                navigate('/record');
-            }, 250);
+            // let res = await axios.get(`https://dynamizaticbackend.herokuapp.com/record/get?page=${pagination.page}&limit=${pagination.limit}`);
+            let res = await axios.get(`http://localhost:3006/record/get?page=${pagination.page}&limit=${pagination.limit}`);
+            setRecords({ ...records, listRecords: res.data.results });
 
         } catch (e) {
             console.log(e);
         };
     }
-
-
     return (
-        <div className="vistaLogin">
-            Hola soy vista Records
+        <div className="vistaRecord">
+            <div className="tableRecords">
+                <AddRecord onChange={()=>getRecords()}/>
+                <div className="rowBox">
+                    {colAt.map((col, index) => (
+                        <div key={index} className="dataBox textCap">{col}</div>
+                    ))}
+                </div>
+                {records.listRecords?.map((a, index) => (
+                    <div key={index}>
+                        <ListRecords data={a} />
+                    </div>))}
+            </div>
         </div>
     )
 }
