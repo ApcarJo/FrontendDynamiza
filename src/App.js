@@ -3,8 +3,7 @@ import Login from './containers/Login/Login.jsx'
 import Register from './containers/Register/Register.jsx'
 import Record from './containers/Record/Record.jsx'
 import Header from './components/Header/Header.jsx'
-import Footer from './components/Footer/Footer.jsx'
-import './App.css';
+import './App.scss';
 
 function App() {
 
